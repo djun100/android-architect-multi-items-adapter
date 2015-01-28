@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+    
+    
+    <RelativeLayout 
+         android:layout_width="match_parent"
+   		 android:layout_height="200dip">
+        
+         <ImageView 
+             android:layout_alignParentRight="true"
+             android:id="@+id/head_img"
+             android:layout_width="50dip"
+   		 	android:layout_height="50dip"
+   		 	android:src="@drawable/ic_launcher"
+   		 	android:scaleType="centerCrop"
+   		 	/>
+        
+         <TextView 
+             android:id="@+id/content_tx"
+             android:layout_alignParentRight="true"
+             android:text="测试内容111111111111111111111"
+             android:layout_marginRight="55dip"
+              android:layout_width="wrap_content"
+   		 	android:layout_height="wrap_content"/>
+        
+    </RelativeLayout>
+
+</RelativeLayout>
