@@ -1,6 +1,7 @@
 package com.listviewdemo.demo4;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.example.listviewdemo.R;
 import com.example.listviewdemo.bean.DemoBean;
@@ -21,7 +22,7 @@ public class Demo4Activity extends Activity{
 		setContentView(R.layout.listview);
 		listView=(ListView)findViewById(R.id.listview);
 		
-		CommonAdapter<DemoBean> mAdapter;
+		AdapterCommonSingleStyle<DemoBean> mAdapter;
 		listView.setAdapter(mAdapter = new AdapterCommonSingleStyle<DemoBean>(  
                 getApplicationContext(), getDemoBean(), R.layout.type1)  
         {  
@@ -31,9 +32,18 @@ public class Demo4Activity extends Activity{
 //                helper.setText(R.id.tv_time, item.getTime());  
                   
 //              helper.getView(R.id.tv_title).setOnClickListener(l)  
-            }  
+            }
+
+			@Override
+			public List onDealRawList(List list) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+  
   
         });
+		
+		
 		
 	}
 	

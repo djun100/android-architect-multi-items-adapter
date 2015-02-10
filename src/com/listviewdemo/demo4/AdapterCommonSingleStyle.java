@@ -4,9 +4,15 @@ import java.util.List;
 
 import android.content.Context;
 
-public abstract class AdapterCommonSingleStyle<T> extends CommonAdapter {
+/**item样式完全一样，不需要position信息加以区别更改指定position的item的样式的AdapterCommon子类
+ * 不需要针对不同item进行处理
+ * @author 承影
+ *
+ * @param <T>
+ */
+public abstract class AdapterCommonSingleStyle<T> extends AdapterCommon {
 
-	public AdapterCommonSingleStyle(Context ctx, List lists, int layoutId) {
+	public AdapterCommonSingleStyle(Context ctx, List<?> lists, int layoutId) {
 		super(ctx, lists, layoutId);
 	}
 

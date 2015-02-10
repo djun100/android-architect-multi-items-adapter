@@ -15,17 +15,27 @@ import com.example.listviewdemo.demo1.view.Type2ItemView;
 
 public class Demo2Adapter  extends BaseAdapter{
 	
-	private ArrayList<DemoBean> list;
+	private ArrayList<DemoBean> mList;
 	
-	private Context context;
+	private Context mContext;
 	
 	public Demo2Adapter(Context context,ArrayList<DemoBean> list){
-		this.list=list;
-		this.context=context;
+		this.mList=list;
+		this.mContext=context;
+		//解决传空参的bug
+    if(list==null){
+        this.mList=new ArrayList<DemoBean>();
+    }
+    //使用mList方便于此处理mList数据
+    /*for(int i=0;i<mList.size();i++){
+        if(!mList.get(i).transStatus.equals("0")){
+            mList.remove(mList.get(i));
+        }
+    }*/
 	}
 	
 	public int getCount() {
-		return list.size();
+		return mList.size();
 	}
 
 	public Object getItem(int position) {
@@ -43,7 +53,7 @@ public class Demo2Adapter  extends BaseAdapter{
 	 */
 	@Override
 	public int getItemViewType(int position) {
-		DemoBean bean=list.get(position);
+		DemoBean bean=mList.get(position);
 		if("2".equals(bean.getType())){
 			return 1;
 		}
@@ -58,20 +68,20 @@ public class Demo2Adapter  extends BaseAdapter{
 
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		DemoBean bean=list.get(position);
+		DemoBean bean=mList.get(position);
 		/**
 		 * 最多每个类型缓存1屏的view,比如 1屏显示4个view，2个类型，最多A布局生成4个B布局生成4个
 		 */
 		if(convertView==null){
 			if("1".equals(bean.getType())){
-				Type1ItemView type1=new Type1ItemView(context);
+				Type1ItemView type1=new Type1ItemView(mContext);
 				convertView=type1.view;
 				convertView.setTag(R.id.type,"1");
 				convertView.setTag(type1);
 				Log.e("Layout inflate", "Layout inflate: type1");
 			}
 			else if("2".equals(bean.getType())){
-				Type2ItemView type2=new Type2ItemView(context);
+				Type2ItemView type2=new Type2ItemView(mContext);
 				convertView=type2.view;
 				convertView.setTag(R.id.type,"2");
 				convertView.setTag(type2);
